@@ -1,0 +1,45 @@
+erDiagram
+    payment_platforms {
+        INT platform_id "PK"
+        VARCHAR(100) platform_name "NN,U"
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP created_at
+    }
+    customers {
+        INT customer_id "PK"
+        VARCHAR(255) full_name "NN"
+        VARCHAR(50) id_number "NN,U"
+        TEXT address "NN"
+        VARCHAR(50) phone "NN"
+        VARCHAR(255) email "NN,U"
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP created_at
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP-ON-UPDATE-CURRENT_TIMESTAMP updated_at
+    }
+    invoices {
+        INT invoice_id "PK"
+        INT customer_id "FK,NN"
+        VARCHAR(100) invoice_number "NN,U"
+        VARCHAR(7) billing_date "NN"
+        DECIMAL(15-2) total_amount "NN"
+        DECIMAL(15-2)-DEFAULT-0-00 paid_amount "NN"
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP created_at
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP-ON-UPDATE-CURRENT_TIMESTAMP updated_at
+    }
+    transactions {
+        VARCHAR(10) transaction_id "PK"
+        INT invoice_id "FK"
+        INT platform_id "FK"
+        INT transaction_type_id "FK"
+        TIMESTAMP transaction_date "NN"
+        DECIMAL(15-2) amount "NN"
+        ENUM(Completada-Pendiente-Fallida) status "NN"
+        TIMESTAMP-DEFAULT-CURRENT_TIMESTAMP created_at
+    }
+    transaction_types {
+        INT transaction_type_id "PK"
+        VARCHAR(150) transaction_type "NN,U"
+    }
+
+    invoices ||--o{ customers : "have"
+    transactions o{--|| invoices : "have"
+    transactions ||--|| payment_platforms : "have a"
+    transactions ||--|| transaction_types : "have a"
