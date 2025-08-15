@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS transactions (
     CONSTRAINT fk_transactions_invoices
         FOREIGN KEY (invoice_id) 
         REFERENCES invoices(invoice_id)
-        ON DELETE CASCADE, -- If the invoice is deleted, its transactions are deleted
+        ON DELETE RESTRICT,
         
     CONSTRAINT fk_transactions_platforms
         FOREIGN KEY (platform_id) 
