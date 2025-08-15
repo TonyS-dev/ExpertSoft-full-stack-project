@@ -6,7 +6,7 @@ export function renderCustomersTable(customers, containerElement) {
         return;
     }
 
-    const sortedCustomers = customers.sort((a, b) => a.customer_id - b.customer_id);
+    const sortedCustomers = customers.sort((a, b) => b.customer_id - a.customer_id);
 
     const tableRows = sortedCustomers.map(customer => `
         <tr>
