@@ -5,6 +5,7 @@ import morgan from "morgan";
 import customersRoutes from "./../routes/customers.js";
 import invoicesRoutes from "./../routes/invoices.js";
 import transactionsRoutes from "./../routes/transactions.js";
+import seedersRoutes from "./../routes/seeders.js";
 
 import { globalErrorHandler } from "./../middleware/globalErrorHandler.js";
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/customers', customersRoutes);
 app.use('/invoices', invoicesRoutes);
 app.use('/transactions', transactionsRoutes);
+app.use('/seeder', seedersRoutes);
 
 // Global Error Handler
 app.use(globalErrorHandler);

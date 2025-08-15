@@ -30,3 +30,6 @@ export const fetchCustomerById = (customerId) => apiRequest(`/customers/${custom
 export const createNewCustomer = (customerData) => apiRequest('/customers', 'POST', customerData);
 export const updateCustomerById = (customerId, customerData) => apiRequest(`/customers/${customerId}`, 'PUT', customerData);
 export const deleteCustomerById = (customerId) => apiRequest(`/customers/${customerId}`, 'DELETE');
+
+// --- Seeder API function ---
+export const runSeed = () => apiRequest('/seeder/run', 'POST');

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const createModal = new bootstrap.Modal(document.getElementById('createCustomerModal'));
     const editModal = new bootstrap.Modal(document.getElementById('editCustomerModal'));
 
+    const fillRecordsButton = document.getElementById('fill-records-button');
+
     // Main function to load and display data
     async function loadAndDisplayCustomers() {
         try {
@@ -96,6 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+    });
+
+    fillRecordsButton.addEventListener('click', async () => {
+        if (!confirm('Are you sure you want to run the seeder? This will add records to the database.')) {
+            return;
+        }
+
+        try {
+            fillRecordsButton.disabled = true;
+            fillRecordsButton.textContent = 'Seeding...';
+            const result = await api.runSeed();
+            alert(result.message);
+            loadAndDisplayCustomers();
+        } catch (error) {
+            alert(`Error running seeders: ${error.message}`);
+        } finally {
+            // Set button back to normal state even if an error occurred
+            fillRecordsButton.disabled = false;
+            fillRecordsButton.textContent = 'Fill Records';
+    }
     });
 
     // Initial data load

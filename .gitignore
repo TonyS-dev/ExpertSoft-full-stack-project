@@ -11,6 +11,7 @@ lerna-debug.log*
 /build
 node_modules
 */dist
+package-lock.json
 
 # Tests
 coverage
