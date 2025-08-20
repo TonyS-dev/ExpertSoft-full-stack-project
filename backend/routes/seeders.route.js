@@ -1,6 +1,6 @@
 // backend/routes/seeders.js
 import express from 'express';
-import * as seedersController from '../controllers/seedersController.js';
+import * as seedersController from '../controllers/seeders.controller.js';
 
 const router = express.Router();
 

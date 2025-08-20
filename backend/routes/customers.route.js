@@ -2,7 +2,7 @@
 // Responsibility: To define the URL routes for the 'customers' entity and map them to controller methods.
 
 import express from 'express';
-import * as customersController from '../controllers/customersController.js';
+import * as customersController from '../controllers/customers.controller.js';
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 // backend/routes/transactions.routes.js
 import express from 'express';
-import * as transactionsController from '../controllers/transactionsController.js';
+import * as transactionsController from '../controllers/transactions.controller.js';
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 // backend/routes/invoices.routes.js
 
 import express from 'express';
-import * as invoicesController from '../controllers/invoicesController.js';
+import * as invoicesController from '../controllers/invoices.controller.js';
 
 const router = express.Router();
 
